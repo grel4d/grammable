@@ -36,7 +36,7 @@ RSpec.describe GramsController, type: :controller do
 
 
   describe "grams#update action" do
-    it "shouldn't let users who didn't create the gram update it"
+    it "shouldn't let users who didn't create the gram update it" do
       gram = FactoryBot.create(:gram)
       user = FactoryBot.create(:user)
       sign_in user
@@ -62,7 +62,6 @@ RSpec.describe GramsController, type: :controller do
     it "should have http 404 error if the gram cannot be found" do
       user = FactoryBot.create(:user)
       sign_in user
-
       patch :update, params: { id: "YOLOSWAG", gram: { message: 'Changed' } }
       expect(response).to have_http_status(:not_found)
     end
@@ -148,7 +147,6 @@ RSpec.describe GramsController, type: :controller do
 
 
   describe "grams#create action" do
-
     it "should require users to be logged in" do
       post :create, params: { gram: { message: "Hello" } }
       expect(response).to redirect_to new_user_session_path
@@ -173,5 +171,4 @@ RSpec.describe GramsController, type: :controller do
       expect(gram_count).to eq Gram.count
     end
   end
-end
 end
