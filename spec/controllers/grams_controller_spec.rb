@@ -76,7 +76,7 @@ RSpec.describe GramsController, type: :controller do
     end
   end
   
-  describe"grams#edit action" do
+  describe "grams#edit action" do
     it "shouldn't let a user who did not create the gram edit a gram" do 
       gram = FactoryBot.create(:gram)
       user = FactoryBot.create(:user)
